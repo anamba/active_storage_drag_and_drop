@@ -36,15 +36,15 @@
     "nyc": "^13.3.0",
     "sinon": "^7.2.3",
     "spark-md5": "^3.0.0",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^4.1.0"
   },
   "dependencies": {
-    "activestorage": ">=5.2.2-1",
+    "@rails/activestorage": "^7.0.0",
     "webpack": ">=4.30.0",
     "webpack-cli": ">=3.3.1"
   },
   "scripts": {
-    "build": "webpack -p",
+    "build": "webpack",
     "dev": "webpack -d --watch",
     "test": "mocha -r babel-register -r jsdom-global/register ./test/mocha/**/*.js",
     "cover": "nyc -r lcov -r text -r html mocha -r babel-register -r jsdom-global/register test/mocha/**/*.js"

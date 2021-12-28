@@ -2,7 +2,7 @@
 
 import { dispatchEvent, fileSizeSI } from './helpers'
 import { endUI, errorUI, initializeUI, progressUI } from './default_ui'
-import { DirectUpload } from 'activestorage'
+import { DirectUpload } from '@rails/activestorage'
 const eventFamily = 'dnd-upload'
 
 export class DragAndDropUploadController {
@@ -24,9 +24,17 @@ export class DragAndDropUploadController {
     this.url = this.input.dataset.directUploadUrl
     this.iconContainer = iconContainer
     this.file = file
-    this.upload = new DirectUpload(this.file, this.url, this)
+    this.upload = new DirectUpload(this.file, this.url, this.directUploadToken, this.attachmentName, this)
     const event = this.dispatch('initialize')
     initializeUI(event)
+  }
+
+  get directUploadToken() {
+    return this.input.getAttribute("data-direct-upload-token")
+  }
+
+  get attachmentName() {
+    return this.input.getAttribute("data-direct-upload-attachment-name")
   }
 
   start (callback: Function) {
